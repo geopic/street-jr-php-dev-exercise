@@ -54,6 +54,8 @@ class PictureController extends Controller
      */
     public function upvote(Request $request, Picture $picture)
     {
-        
+        DB::update('UPDATE pictures SET votes = ? WHERE id = ?', [(int)$picture['votes'] + 1, $picture['id']]);
+
+        return redirect()->action([$this::class, 'index']);
     }
 }

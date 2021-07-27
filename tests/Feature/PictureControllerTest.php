@@ -62,8 +62,37 @@ class PictureControllerTest extends TestCase
         $this->assertFileExists(storage_path('app/public/' . $file->hashName()));
     }
 
-    // public function test_upvote_a_dog()
-    // {
+    public function test_upvote_a_dog()
+    {
+        $dog = Picture::create([
+            'name' => 'Mecha-Lassie',
+            'file_path' => 'dog.jpg',
+        ]);
 
-    // }
+        $dog->save();
+
+        // Dog has 0 votes by default
+        $this->assertDatabaseHas('pictures', [
+            'name' => 'Mecha-Lassie',
+            'votes' => '0'
+        ]);
+
+        $this->post('/pictures/1/upvote');
+
+        // Dog should now have 1 vote
+        $this->assertDatabaseHas('pictures', [
+            'name' => 'Mecha-Lassie',
+            'votes' => '1'
+        ]);
+
+        $this->post('/pictures/1/upvote');
+        $this->post('/pictures/1/upvote');
+        $this->post('/pictures/1/upvote');
+
+        // Dog should now have 4 votes
+        $this->assertDatabaseHas('pictures', [
+            'name' => 'Mecha-Lassie',
+            'votes' => '4'
+        ]);
+    }
 }

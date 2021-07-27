@@ -9,7 +9,12 @@
             <img class="w-full h-full" width="400px" src="{{ asset('storage/' . $picture->file_path) }}">
             <p class="mt-2 text-gray-500">{{ $picture->name }}</p>
             <p class="mt-2 text-gray-500">{{ $picture->votes }} votes</p>
-            <p class="mt-2 text-gray-500">yeah</p>
+            <p class="mt-2 text-gray-500">
+                <form method="post" action="/pictures/{{ $picture->id }}/upvote">
+                    @csrf
+                    <button type="submit">Upvote</button>
+                </form>
+            </p>
         </div>
     </div>
 @endforeach

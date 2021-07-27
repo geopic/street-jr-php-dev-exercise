@@ -6,6 +6,7 @@
     <h2 class="text-center text-2xl">Upload your dog!</h2>
     <p>
         <form method="post" action="store" enctype="multipart/form-data">
+            @csrf
             <div class="form-section">
                 <label for="name-input">Name: </label>
                 <input type="text" id="name-input" name="name" placeholder="Please enter the name of the dog here..." required/>
