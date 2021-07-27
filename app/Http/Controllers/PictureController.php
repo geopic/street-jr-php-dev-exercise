@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Picture;
 
@@ -38,7 +39,11 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        // See PictureControllerTest to see what this should do
+        $filepath = $request->file('image')->store('/public');
+
+        DB::insert('INSERT INTO pictures (name, file_path, created_at, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)', [$request->input()['name'], basename($filepath)]);
+        
+        return redirect()->action([$this::class, 'index']);
     }
 
     /**

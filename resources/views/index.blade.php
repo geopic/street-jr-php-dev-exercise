@@ -9,6 +9,7 @@
             <img class="w-full h-full" width="400px" src="{{ asset('storage/' . $picture->file_path) }}">
             <p class="mt-2 text-gray-500">{{ $picture->name }}</p>
             <p class="mt-2 text-gray-500">{{ $picture->votes }} votes</p>
+            <p class="mt-2 text-gray-500">yeah</p>
         </div>
     </div>
 @endforeach

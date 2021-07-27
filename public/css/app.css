@@ -1,0 +1,29 @@
+.form-section {
+    align-items: stretch;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px auto;
+    max-width: 560px;
+    padding: 0 15px;
+}
+
+.form-section:nth-of-type(2n) {
+    background-color: #ededed;
+}
+
+.form-section label {
+    align-self: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.form-section input {
+    padding: 10px 15px;
+    width: 100%;
+}
+
+#form-section-submit {
+    border: 0;
+    justify-content: center;
+}
